@@ -4,7 +4,7 @@ ProjGlb::Application.routes.draw do
   match '/auth/github/callback', to: 'sessions#create'
   match '/auth/failure', :to => 'sessions#failure'
 
-  get '/user/index', to: 'user#index'
+  resources :user, only: [:index, :show]
 
   root to: "sessions#new"
 

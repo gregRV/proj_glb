@@ -1,7 +1,6 @@
 class User < ActiveRecord::Base
-  # attr_accessible :title, :body
+	has_many :authorizations
+	# validates :name, :email, :presence => true
 
-  def self.find_or_create_from_auth_hash(auth_hash)
-  	# check against database to find/create user
-  end
+	attr_accessible :name, :email
 end
