@@ -7,6 +7,18 @@ gem 'rails', '3.2.13'
 
 gem 'pg'
 gem 'rspec-rails'
+gem "octokit", "~> 2.0"
+gem 'omniauth-github'
+gem 'awesome_print'
+
+group :development, :test do
+	gem 'dotenv-rails'
+end
+
+group :development do
+	gem 'better_errors'
+	gem 'binding_of_caller'
+end
 
 
 # Gems used only for assets and not required

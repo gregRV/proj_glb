@@ -1,4 +1,13 @@
 ProjGlb::Application.routes.draw do
+
+  get   '/login', :to => 'sessions#new', :as => :login
+  match '/auth/github/callback', to: 'sessions#create'
+  match '/auth/failure', :to => 'sessions#failure'
+
+  resources :user, only: [:index, :show]
+
+  root to: "sessions#new"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
