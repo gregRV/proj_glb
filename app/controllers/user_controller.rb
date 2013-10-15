@@ -4,7 +4,26 @@ class UserController < ApplicationController
   end
   
   def show
-  	@user = User.find(params[:id])
+  	# tmp = User.find(params[:id])
+  	# puts '*' * 80
+  	# ap tmp.name
+  	# @github_user = Octokit.user(tmp.name)
+  	# ap @github_user
+  	
+  	puts '*' * 80
+  	user = User.find(params[:id])
+  	client = Octokit::Client.new(login: user.name, oauth_token: user.authorizations.first.uid)
+  	# 'oauth_token' appears to be same as 'uid'
+
+  	@followers = []
+  	client.followers.each do |f|
+  		@followers << f[:login]
+  	end
+
+  	@following = []
+ 		client.followers.each do |f|
+  		@following << f[:login]
+  	end
   end
 end
 

@@ -5,9 +5,6 @@ class SessionsController < ApplicationController
 
   def create
     authorization = Authorization.find_or_create_by_provider_and_uid(auth_hash["provider"], auth_hash["uid"])
-    puts '*' * 80
-    ap authorization
-
     if authorization
       user = User.find_by_name(authorization.user.name)
     else
