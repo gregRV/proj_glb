@@ -19,6 +19,10 @@ class SessionsController < ApplicationController
     redirect_to user_path(user)
   end
 
+  def failure
+    render :text => "Sorry, but you didn't allow access to our app!"
+  end
+
   protected
 
   def auth_hash
