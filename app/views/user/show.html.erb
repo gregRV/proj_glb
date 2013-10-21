@@ -1,11 +1,5 @@
-<h1>user#show</h1>
+<p>user#show</p>
 
-<h3>Followers</h3>
-<% @followers.each do |f| %>
-	<li><%= f %></li>
-<% end %>
+<h1>:: <%= @user.username %> ::</h1>
 
-<h3>Following</h3>
-<% @following.each do |f| %>
-	<li><%= f %></li>
-<% end %>
+<h3>Total Commits this Week: <%= @total_commits %></h3>

@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       user = User.find_by_name(authorization.user.name)
     else
       user = User.new :name => auth_hash[:info][:nickname]
-      user.authorizations.build :provider => auth_hash[:provider], :uid => auth_hash[:uid]
+      user.authorizations.build :provider => auth_hash[:provider], :uid => auth_hash[:uid], :token => auth_hash.credentials.token
       user.save 
     end
     
