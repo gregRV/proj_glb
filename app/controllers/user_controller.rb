@@ -1,12 +1,21 @@
 class UserController < ApplicationController
 
   def index
+  	@users = User.all
   end
   
-  def show
+  def show 	
+  	puts '*' * 80
   	@user = User.find(params[:id])
+  	client = User.create_client(@user)
+  	@user.update_user_network(client)
   end
 end
+
+
+
+# SCRATCH WORK
+##################################################
 
 # >> auth_hash[:extra][:raw_info]
 # => #<OmniAuth::AuthHash avatar_url="https://0.gravatar.com/avatar/780de66d49071d1f4a3826a8339c78d6?d=https%3A%2F%2Fidenticons.github.com%2F43d54de4194c7aca748b24d26d9118cd.png" 

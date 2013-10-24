@@ -1,3 +1,15 @@
-<h1>user#show</h1>
+<p>user#show</p>
 
-<h3>Welcome, <%= @user.name %>!</h3>
+<h1><%= @user.username %></h1>
+
+<h3><%= @user.weeks_commits %></h3>
+
+<h3><%= @user.current_streak %></h3>
+
+<h3><%= @user.followers %></h3>
+
+<h3><%= @user.following %></h3>
+
+<br><br>
+
+<%= link_to "Rankings", user_index_path %>
