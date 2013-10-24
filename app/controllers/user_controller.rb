@@ -1,48 +1,21 @@
 class UserController < ApplicationController
 
   def index
+  	@users = User.all
   end
   
   def show 	
   	puts '*' * 80
   	@user = User.find(params[:id])
-  	@client = Octokit::Client.new(login: @user.name, access_token: @user.authorizations.first.token)
-		
-		# @total_commits = 0
-		# @all_repos = @client.repos.map {|repo| repo.full_name}
-		# @all_repos.each do |owner_and_name|
-		# 	# @total_commits += @client.get("/repos/#{owner_and_name}/stats/commit_activity").last.total
-		# 	commits = @client.get("/repos/#{owner_and_name}/stats/commit_activity").last.total
-		# 	@total_commits += commits
-		# end
-
-		debugger
+  	client = User.create_client(@user)
+  	@user.update_user_network(client)
   end
 end
 
 
-  	# @followers = []
-  	# @client.followers.each do |f|
-  	# 	@followers << f[:login]
-  	# end
 
-  	# @following = []
- 		# @client.followers.each do |f|
-  	# 	@following << f[:login]
-  	# end
-
-		#   	<h3>Followers</h3>
-		# <% @followers.each do |f| %>
-		# 	<li><%= f %></li>
-		# <% end %>
-
-		# <h3>Following</h3>
-		# <% @following.each do |f| %>
-		# 	<li><%= f %></li>
-		# <% end %>
-
-
-
+# SCRATCH WORK
+##################################################
 
 # >> auth_hash[:extra][:raw_info]
 # => #<OmniAuth::AuthHash avatar_url="https://0.gravatar.com/avatar/780de66d49071d1f4a3826a8339c78d6?d=https%3A%2F%2Fidenticons.github.com%2F43d54de4194c7aca748b24d26d9118cd.png" 

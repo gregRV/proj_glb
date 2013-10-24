@@ -24,10 +24,12 @@ ActiveRecord::Schema.define(:version => 20131014085504) do
 
   create_table "users", :force => true do |t|
     t.string   "username"
-    t.integer  "weeks_commits"
-    t.integer  "current_streak"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.integer  "weeks_commits",  :default => 0
+    t.integer  "current_streak", :default => 0
+    t.integer  "followers",      :default => 0
+    t.integer  "following",      :default => 0
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
   end
 
 end
